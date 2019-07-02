@@ -1,0 +1,23 @@
+@import './_utils.scss';
+
+$main-font-size: rem(16px);
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px
+) !default;
+
+$grid-breakpoints: (
+  sm,
+  md,
+  lg,
+  xl
+) !default;
+$grid-columns: 12 !default;
+$startContentWidth: 432px;
+$startContentRaduis: 6px;

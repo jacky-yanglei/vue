@@ -1,0 +1,15 @@
+@mixin bgImg($url) {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url($url);
+}
+@mixin toolNavBg($url) {
+  .item-icon {
+    background-image: url($url + '.png');
+  }
+  &:hover {
+    .item-icon {
+      background-image: url($url + '_hover.png');
+    }
+  }
+}

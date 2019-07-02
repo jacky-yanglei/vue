@@ -1,0 +1,179 @@
+@import './_utils.scss';
+@import './_constant.scss';
+// 背景图片
+@mixin bg-url($url) {
+  background-image: url($url+'@2x.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    background-image: url($url+'@3x.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+}
+
+// 栅格布局
+@mixin breakpoint-max($name, $points: $breakpoints) {
+  @if map-has-key($points, $name) {
+    $max: breakpoint-max($name, $points);
+    @if $max {
+      @media (max-width: $max) {
+        @content;
+      }
+    }
+    @else {
+      @content;
+    }
+  }
+  @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$name}`. '+'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+// 按钮样式
+@mixin startBtn {
+  width: 312px;
+  height: 46px;
+  border-radius: 4px;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 1);
+  line-height: 22px;
+  cursor: pointer;
+}
+
+// 主要按钮
+@mixin startBtn-primary {
+  position: relative;
+  @include startBtn();
+  background: linear-gradient( -90deg, rgba(57, 193, 255, 1), rgba(0, 159, 232, 1));
+  text-align: center;
+  overflow: visible;
+}
+// primaryBtn HOVE效果
+@mixin startBtn-primaryHover {
+  @include startBtn-primary();
+  transition: box-shadow 0.3s;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 6px 20px 0px rgba(0, 159, 232, 0.5);
+    &::after {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 2px solid white;
+      border-radius: $startContentRaduis;
+    }
+  }
+}
+
+// 空心按钮
+@mixin startBtn-outline {
+  @include startBtn();
+  border: 1px solid;
+  border-image: linear-gradient(#39c1ff, #009fe8) 30 30;
+}
+
+// list hover效果
+@mixin listHover {
+  &:hover,
+  &:focus {
+    &::before {
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      content: '';
+      width: 100%;
+      height: 100%;
+      border: 3px solid #39C1FF;
+      box-shadow: 0px 6px 20px 0px rgba(0, 159, 232, 0.5);
+      border-radius: 3px;
+    }
+  }
+}
+
+@mixin startButtons {
+  @include startBtn-primary ();
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 100%;
+  height: 56px;
+  border-radius: $startContentRaduis;
+  .button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-size: 16px;
+    line-height: 56px;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    &:hover,
+    &:focus {
+      box-shadow: 0px 6px 20px 0px rgba(0, 159, 232, 0.5);
+      &::after {
+        position: absolute;
+        top: -3px;
+        left: -4px;
+        width: 100%;
+        height: 100%;
+        border: 3px solid white;
+        content: '';
+      }
+      &:nth-child(1) {
+        &::after {
+          border-radius: $startContentRaduis 0 0 $startContentRaduis;
+        }
+      }
+      &:nth-child(2) {
+        &::after {
+          border-radius: 0 $startContentRaduis $startContentRaduis 0;
+        }
+      }
+    }
+    &:nth-child(2) {
+      border-left: 3px solid white;
+    }
+  }
+}
+
+// 表单警告提示
+@mixin inputWarnTip {
+  & > input {
+    border-color: transparent;
+    width: 100%;
+    height: 52px;
+    padding-left:20px;
+    padding-right: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #f2f5f8;
+    &:focus {
+      border: 1px solid #009fe8;
+      box-shadow: 0px 6px 20px 0px rgba(0, 159, 232, 0.5);
+      background: transparent;
+    }
+  }
+  .input-error {
+    position: absolute;
+    font-size: 14px;
+    color: #F14466;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .error {
+    border: 1px solid #F14466;
+    background:rgba(241,68,102,0.1);
+  }
+}

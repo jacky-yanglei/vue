@@ -1,0 +1,114 @@
+@import './_utils.scss';
+
+.tools-wrapper-main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background:linear-gradient(0deg, rgba(238,239,242,1), rgba(255,255,255,1));
+}
+.pdt-176 {
+  padding-top: rem(176px);
+}
+.tools-wrapper-min {
+  width: rem(590px);
+  height: rem(540px);
+  background: rgba(255,255,255,1);
+  // background-color: aquamarine;
+  border-radius: rem(8px);
+  margin: 0 auto;
+}
+.tools-wrapper-max {
+  margin-top: rem(40px);
+  z-index: 1;
+}
+.tools-title {
+  font-size: rem(36px);
+  color: rgba(58,56,72,1);
+  line-height: rem(50px);
+  text-align: center;
+  padding-top: rem(60px);
+}
+.tools-tip {
+  font-size: rem(26px);
+  color: rgba(131,137,161,1);
+  line-height: rem(37px);
+  text-align: center;
+  padding-top: rem(20px);
+}
+.tools-btn-min {
+  width: rem(510px);
+  height: rem(90px);
+  margin: rem(223px) auto 0;
+}
+.mg-40 {
+  margin-left: rem(40px);
+  margin-right: rem(40px);
+}
+.tools-input {
+  width: 100%;
+  height: rem(90px);
+  background: rgba(255,255,255,1);
+  border-radius: rem(8px);
+  border: rem(2px) solid  rgba(230,230,231,1);
+  padding-left: rem(30px);
+  padding-right: rem(30px);
+  transition: box-shadow .3s;
+  &:focus {
+    border: rem(2px) solid rgba(57, 193, 255, 1);
+    box-shadow: 0px 8px 30px 0px rgba(0, 159, 232, 0.3);
+  }
+  &.error-input {
+    border-color: rgba(241,68,102,1);
+    background: rgba(241,68,102,0.1);
+  }
+  & + .error-tip {
+    padding-top: rem(20px);
+    font-size: rem(26px);
+    color: rgba(241,68,102,1);
+    transition: padding-top .3s;
+  }
+}
+.tools-bottom {
+  position: fixed;
+  left: rem(0px);
+  right: rem(0px);
+  bottom: rem(0px);
+  padding-left: rem(40px);
+  padding-right: rem(40px);
+  padding-bottom: rem(40px);
+  padding-top: rem(20px);
+}
+.switch-txt {
+  float: left;
+  font-size: rem(30px);
+  color: rgba(58,56,72,1);
+  line-height: rem(62px);
+}
+.switch-btn {
+  float: right;
+  width: rem(102px);
+  height: rem(62px);
+  background: rgba(131,137,161,1);
+  border-radius: rem(31px);
+  position: relative;
+  & > .circle {
+    display: block;
+    width: rem(56px);
+    height: rem(56px);
+    border-radius: 100%;
+    background: rgba(255,255,255,1);
+    margin-left: rem(4px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: margin-left .3s;
+  }
+  &.switch-open-btn {
+    background: rgba(0,159,232,1);
+    & > .circle {
+      margin-left: rem(42px);
+    }
+  }
+}
